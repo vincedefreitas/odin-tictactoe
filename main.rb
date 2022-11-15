@@ -1,14 +1,22 @@
-# Ask for player 1 name
-# Ask for player 1 letter/marker
-# Ask for player 2 name
-# Ask for player 2 letter/marker
-# Display numbered grid & score - ask player 1 to choose a position available on the board
-# Update board position with relative marker. Ask player 2 to choose position
-# Game to continue until there is a winner or ends in a draw
-# If player gets 3 markers in a row - horizontally, vertically or diagonally - then player wins
-# If neither player gets 3 markers in a row then it's a draw
-# Update score
-# Ask if they would like to play again?
-# Repeat
+require_relative 'display'
+require_relative 'board'
+require_relative 'player'
+require_relative 'game'
 
+def play_game
+  game = Game.new
+  game.game_logic
+  repeat_game
+end
 
+def repeat_game
+  puts "Would you like to play a new game? Press 'y' for yes, or 'n' for no"
+  answer = gets.chomp.downcase
+  if answer == 'y'
+    play_game
+  else
+    puts 'Thanks for playing!'
+  end
+end
+
+play_game
